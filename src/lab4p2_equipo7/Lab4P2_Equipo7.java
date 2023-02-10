@@ -4,17 +4,34 @@
  */
 package lab4p2_equipo7;
 
-/**
- *
- * @author HP
- */
+import java.util.*;
+
 public class Lab4P2_Equipo7 {
 
-    /**
-     * @param args the command line arguments
-     */
+    static Scanner leer = new Scanner(System.in);
+    static ArrayList<pieza> piezas = new ArrayList();
+
     public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
-}
+        Object[][] tablero = new Object[8][8];
+        imprimir(tablero);
+
+    }//Fin del main 
+
+    public static void imprimir(Object[][] tablero) {
+        System.out.println("  A  B  C  D  E  F  G  H");
+        for (int i = 0; i < tablero.length; i++) {
+            System.out.print(i + 1);
+            for (int j = 0; j < tablero[i].length; j++) {
+                if (tablero[i][j] == null) {
+                    System.out.print("[ ]");
+                } else {
+                    System.out.print("[" + ((pieza) tablero[i][j]).getNombre() + "]");
+                }
+
+            }
+            System.out.println("");
+        }
+
+    }//Fin metodo imprimir
+
+}//Fin de la clase
