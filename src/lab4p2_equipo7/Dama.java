@@ -70,8 +70,8 @@ public class Dama extends pieza{
                 break;
             }
         }
-        //for para todos los movimientos a la Arriba, representado por arrays
-        for (int i = y+1; i > 0; i++) {
+        //for para todos los movimientos arriba, representado por arrays
+        for (int i = y-1; i > 0; i++) {
             if(tablero[x][i] == null){
                 int[] pos = new int[2];
                 pos[0] = x;
@@ -87,7 +87,40 @@ public class Dama extends pieza{
                 break;
             }
         }
-        //for para 
+        //for para todos los movimientos abajo, representado por arrays
+        for (int i = y+1; i < tablero.length || i > tablero[0].length; i++) {
+            if(tablero[x][i] == null){
+                int[] pos = new int[2];
+                pos[0] = x;
+                pos[1] = i;
+                pValidas.add(pos);
+            }else{
+                if(((pieza)tablero[x][i]).isBlanco() != blanco){
+                    int[] pos = new int[2];
+                    pos[0] = x;
+                    pos[1] = i;
+                    pValidas.add(pos);
+                }
+                break;
+            }
+        }
+        //for para los movimientos en diagonal arriba derecha, representado por arrays
+        for (int i = y-1, j = x + 1; i < tablero.length; i++) {
+            if(tablero[x][i] == null){
+                int[] pos = new int[2];
+                pos[0] = x;
+                pos[1] = i;
+                pValidas.add(pos);
+            }else{
+                if(((pieza)tablero[x][i]).isBlanco() != blanco){
+                    int[] pos = new int[2];
+                    pos[0] = x;
+                    pos[1] = i;
+                    pValidas.add(pos);
+                }
+                break;
+            }
+        }
         return false;
         
     }
