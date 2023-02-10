@@ -53,6 +53,41 @@ public class Dama extends pieza{
                 break;
             }
         }
+        //for para todos los movimientos a la izquierda, representado por arrays
+        for (int i = x-1; i > 0; i--) {
+            if(tablero[i][y] == null){
+                int[] pos = new int[2];
+                pos[0] = i;
+                pos[1] = y;
+                pValidas.add(pos);
+            }else{
+                if(((pieza)tablero[i][y]).isBlanco() != blanco){
+                    int[] pos = new int[2];
+                    pos[0] = i;
+                    pos[1] = y;
+                    pValidas.add(pos);
+                }
+                break;
+            }
+        }
+        //for para todos los movimientos a la Arriba, representado por arrays
+        for (int i = y+1; i > 0; i++) {
+            if(tablero[x][i] == null){
+                int[] pos = new int[2];
+                pos[0] = x;
+                pos[1] = i;
+                pValidas.add(pos);
+            }else{
+                if(((pieza)tablero[x][i]).isBlanco() != blanco){
+                    int[] pos = new int[2];
+                    pos[0] = x;
+                    pos[1] = i;
+                    pValidas.add(pos);
+                }
+                break;
+            }
+        }
+        //for para 
         return false;
         
     }
