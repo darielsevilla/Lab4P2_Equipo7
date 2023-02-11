@@ -16,6 +16,8 @@ public class Peon extends pieza {
             this.nombre = "p";
             this.blanco = false;
         }
+        this.x = x;
+        this.y = y;
     }
 
     @Override

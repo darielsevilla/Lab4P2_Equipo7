@@ -13,11 +13,19 @@ public class Lab4P2_Equipo7 {
 
     public static void main(String[] args) {
         Object[][] tablero = new Object[8][8];
+        //piezas blancas
+        Alfil al = new Alfil(2,7, true);
+        
+        Peon p1 = new Peon(0, 1, false);
+        Torre Tblanca = new Torre(0, 7, true);
         Dama Dblanca = new Dama(true);
+        tablero[al.getY()][al.getX()] = al;
         tablero[Dblanca.getY()][Dblanca.getX()] = Dblanca;
+        tablero[p1.getY()][p1.getX()] = p1;
+        tablero[Tblanca.getY()][Tblanca.getX()] = Tblanca;
         imprimir(tablero);
         
-        System.out.println("Jugador blancar: ");
+        System.out.println("Jugador blancas: ");
         String j1 = leer.nextLine();
         System.out.println("Jugador negro: ");
         String j2 = leer.nextLine();
@@ -42,7 +50,7 @@ public class Lab4P2_Equipo7 {
                     for (String a : split) {
                         System.out.println(a);
                     }
-                    System.out.println(tablero[7][3]);
+                   
                     
                     String nombre = split[0];
                     String posInicial = split2[0].toUpperCase();
@@ -61,16 +69,17 @@ public class Lab4P2_Equipo7 {
                     if(posIn[0] <= 8 && posIn[0] >= 0 && posIn[1] <= 8 && posIn[1] >= 0){
                         if(tablero[posIn[1]][posIn[0]] != null){
                             if(((pieza)tablero[posIn[1]][posIn[0]]).getNombre().equals(nombre)){
-                                if(turno == 0 && ((pieza)tablero[posIn[1]][posIn[0]]).isBlanco() || turno == 1 && !((pieza)tablero[posIn[0]][posIn[1]]).isBlanco()){
+                                if(turno == 0 && ((pieza)tablero[posIn[1]][posIn[0]]).isBlanco() || turno == 1 && !((pieza)tablero[posIn[1]][posIn[0]]).isBlanco()){
                                         
-                                    System.out.println(posFin[1]);
-                                    System.out.println(posFin[0]);
+                                    
                                     if(((pieza)tablero[posIn[1]][posIn[0]]).movimiento(posIn[0], posIn[1], posFin[0], posFin[1], tablero)){
                                         tablero[posFin[1]][posFin[0]] = ((pieza)tablero[posIn[1]][posIn[0]]);
                                         tablero[posIn[1]][posIn[0]] = null;
                                     }else{
                                         System.out.println("Movimiento no valido");
                                     }
+                                }else{
+                                    System.out.println("No es su fuerza");
                                 }
                             }else{
                                 System.out.println("Nombre invalido");

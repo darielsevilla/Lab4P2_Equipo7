@@ -27,7 +27,7 @@ public class Dama extends pieza{
             this.nombre = "q";
             this.x = 3;
             this.y = 0;
-            this.blanco = true;
+            this.blanco = false;
         }
     }
 
