@@ -138,14 +138,12 @@ public class Lab4P2_Equipo7 {
                 if (input.contains("|") && input.contains("-")) {
                     String[] split = input.split("\\|");
                     String[] split2 = split[1].split("-");
-                    for (String a : split) {
-                        System.out.println(a);
-                    }
+                    
 
                     String nombre = split[0];
                     String posInicial = split2[0].toUpperCase();
                     String posNueva = split2[1].toUpperCase();
-                    System.out.println(nombre);
+                    
                     int[] posIn = new int[2];
                     int[] posFin = new int[2];
                     //columna
