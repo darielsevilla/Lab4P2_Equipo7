@@ -67,7 +67,7 @@ public class Alfil extends pieza {
             }
         }
         //for para los movimientos en diagonal abajo izquierda, representado por arrays
-        for (int i = y + 1, j = x - 1; i < tablero.length && j >= 0; i--, j++) {
+        for (int i = y + 1, j = x - 1; i < tablero.length && j >= 0; i++, j--) {
             if (tablero[i][j] == null) {
                 int[] pos = new int[2];
                 pos[0] = j;
@@ -102,6 +102,7 @@ public class Alfil extends pieza {
             }
    
         }
+        
         int[] validar = new int[2];
         validar[0] = nX;
         validar[1] = nY;
@@ -110,6 +111,8 @@ public class Alfil extends pieza {
         for (int[] i : pValidas) {
             
             if(i[0] == validar[0] && i[1] == validar[1]){
+                x = nX;
+                y = nY;
                 return true;
             }
         }

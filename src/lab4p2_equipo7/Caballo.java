@@ -4,6 +4,8 @@
  */
 package lab4p2_equipo7;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author skxka
@@ -14,7 +16,7 @@ public class Caballo extends pieza {
         super();
     }
 
-    public Caballo(String nombre, int x, int y, boolean blanca) {
+    public Caballo(int x, int y, boolean blanca) {
         super();
         if (blanca) {
             this.nombre = "N";
@@ -29,16 +31,71 @@ public class Caballo extends pieza {
 
     @Override
     public boolean movimiento(int x, int y, int nX, int nY, Object[][] tablero) {
-        boolean mover = true;
-        if (blanco == true) {
-            if ((nX == 1 && nY == 2 || nX == 2 && nY == y)) {
-            } else {
-                mover = false;
+        ArrayList<int[]> ps = new ArrayList();
+        int a = -1;
+        for (int i = 1; i <= 8; i++) {
+            
+            int v = -2;
+            int h = -1;
+            if(i == 1){
+                v = 2;
+                h = 1;
+            }else if (i== 2){
+                v = 2;
+                h = -1;
+            }else if (i == 3){
+                v = -2;
+                h = 1;
+            }else if(i == 4){
+                v = -2;
+                h = -1;
+            }else if(i == 5){
+                h = 2;
+                v = 1;
+            }else if( i == 6){
+                h = 2;
+                v = -1;
+            }else if( i == 6){
+                h = -2;
+                v = 1;
+            }else if(i == 8){
+                h = -2;
+                v = -1;
             }
-            }else {
-                 mover = false;   
+            
+            
+            if (y - v >= 0 && y - v < 8 && x - h >= 0 && x - h < 8) {
+                int nnX = x - h;
+                int nnY = y - v;
+                if (tablero[nnY][nnX] == null) {
+                    int[] nP = new int[2];
+                    nP[0] = nnY;
+                    nP[1] = nnX;
+                    ps.add(nP);
+                } else {
+                    if (((pieza) tablero[nnY][nnX]).isBlanco() != blanco) {
+                        int[] nP = new int[2];
+                        nP[0] = nnY;
+                        nP[1] = nnX;
+                        ps.add(nP);
                     }
-            return mover;
+                }
+            }
         }
 
+        int[] n = new int[2];
+        n[0] = nY;
+        n[1] = nX;
+
+        for (int[] p : ps) {
+            if (p[0] == n[0] && p[1] == n[1]) {
+
+                x = nX;
+                y = nY;
+                return true;
+            }
+        }
+        return false;
+
     }
+}

@@ -113,6 +113,8 @@ public class Torre extends pieza {
         for (int[] i : pValidas) {
             
             if(i[0] == validar[0] && i[1] == validar[1]){
+                x = nX;
+                y = nY;
                 return true;
             }
         }
